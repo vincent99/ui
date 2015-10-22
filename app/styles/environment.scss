@@ -159,3 +159,10 @@
     }
   }
 }
+
+
+
+#chart-svg {
+  @extend #environment-svg;
+  min-height: 80vh;
+}
