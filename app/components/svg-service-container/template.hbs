@@ -1,12 +1,7 @@
-<g>
-  <rect x="{{xCoord}}" y="{{yCoord}}" class="st0" width="235" height="66"  style="opacity: .1;"/>
-  <g transform="translate(0,0)">
-    <foreignObject x="{{xCoord}}" y="{{yCoord}}"  width="235" height="66" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" >
-      <body  xmlns="http://www.w3.org/1999/xhtml">
-        <div>
-          {{service.type}}
-        </div>
-      </body>
-    </foreignObject>
-  </g>
-</g>
+<rect class="st0" width="{{width}}" height="{{height}}" style="opacity: .1;"/>
+<foreignObject width="{{width}}" height="{{height}}">
+  {{#if true}}
+    {{! This seemingly useless if makes the foreignObject work for reasons unknown}}
+    <div>{{node.service.type}}</div>
+  {{/if}}
+</foreignObject>
