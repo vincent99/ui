@@ -1,7 +1,21 @@
-<rect class="st0" width="{{width}}" height="{{height}}" style="opacity: .1;"/>
+<rect width="{{width}}" height="{{height}}" style="opacity: .1;"/>
 <foreignObject width="{{width}}" height="{{height}}">
   {{#if true}}
     {{! This seemingly useless if makes the foreignObject work for reasons unknown}}
-    <div>{{node.service.type}}</div>
+    <div class="node container" style="height:{{height}}px;width:{{width}}px" xmlns="http://www.w3.org/1999/xhtml">
+      <div class="state"></div>
+      {{#if (not-eq node.service.type "service")}}
+        <div class="badge service">
+          {{node.service.type}}
+        </div>
+      {{/if}}
+      <div class="row">
+        <div class="badge pull-right"><i class="fa fa-cube"></i> {{containerCount}}</div>
+      </div>
+      <div class="row title">
+        <h5>{{node.service.name}}</h5>
+      </div>
+      <div class="row"></div>
+    </div>
   {{/if}}
 </foreignObject>
