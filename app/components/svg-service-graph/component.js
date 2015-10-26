@@ -15,7 +15,7 @@ export default Ember.Component.extend({
     return this.get('services').map((service, index) => {
       return {
         x: 100 + 300*(index%3),
-        y: 100*Math.floor(index/3),
+        y: 200*Math.floor(index/3),
         service: service
       };
     });

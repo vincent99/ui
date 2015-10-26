@@ -385,6 +385,19 @@ var Service = Resource.extend(ReadLabels, {
     return activeIcon(this);
   }.property('type'),
 
+  serviceType: Ember.computed('type', function() {
+    switch (this.get('type')) {
+        case 'dnsService':
+          return 'Service Alias';
+        case 'loadBalancerService':
+          return 'Load Balancer';
+        case 'externalService':
+          return 'External Service';
+        default:
+          break;
+    }
+  }),
+
 });
 
 export function activeIcon(service)

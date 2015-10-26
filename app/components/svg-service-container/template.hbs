@@ -3,19 +3,30 @@
   {{#if true}}
     {{! This seemingly useless if makes the foreignObject work for reasons unknown}}
     <div class="node container" style="height:{{height}}px;width:{{width}}px" xmlns="http://www.w3.org/1999/xhtml">
-      <div class="state"></div>
-      {{#if (not-eq node.service.type "service")}}
-        <div class="badge service">
-          {{node.service.type}}
-        </div>
-      {{/if}}
+      <div class="state {{stateBackground}}"></div>
       <div class="row">
         <div class="badge pull-right"><i class="fa fa-cube"></i> {{containerCount}}</div>
       </div>
       <div class="row title">
         <h5>{{node.service.name}}</h5>
       </div>
-      <div class="row"></div>
+      <div class="row actions">
+        <div class="button-group pull-right" role="group">
+          {{#if (eq node.service.state 'active')}}
+            <button type="button" class="btn btn-danger btn-xs"><i class="icon icon-fw icon icon-pause"></i></button>
+          {{else}}
+            <button type="button" class="btn btn-success btn-xs"><i class="icon icon-fw icon icon-play"></i></button>
+          {{/if}}
+          {{svg-action-menu model=node.service}}
+        </div>
+      </div>
+      {{#if (not-eq node.service.type "service")}}
+        <div class="container-badge">
+          <div class="badge service">
+            {{node.service.serviceType}}
+          </div>
+        </div>
+      {{/if}}
     </div>
   {{/if}}
 </foreignObject>

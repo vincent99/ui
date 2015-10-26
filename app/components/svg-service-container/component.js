@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  resourceActions: Ember.inject.service('resource-actions'),
+
   node: null,
 
 
@@ -9,6 +11,13 @@ export default Ember.Component.extend({
 
   width: 235,
   height: 80,
+
+  actions: {
+    showDropDown: function(evt) {
+      debugger;
+      this.get('resourceActions').show(this.get('node.service'), Ember.$('#dropdown-toggler'), this.$());
+    }
+  },
 
   transform: Ember.computed('node.{x,y}', function() {
     return `translate(${this.get('node.x')},${this.get('node.y')})`;
@@ -22,6 +31,8 @@ export default Ember.Component.extend({
     }
   }),
 
-  status: Ember.computed('node.state', function() {
-  }),
+  stateBackground: function() {
+    return this.get('node.service.stateColor').replace("text-","bg-");
+  }.property('node.service.stateColor'),
+
 });
