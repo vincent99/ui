@@ -217,4 +217,9 @@ $light-yellow: #FFBE18;
       }
     }
   }
+  .edge-path {
+    fill: none;
+    stroke: $light-grey;
+    stroke-width: 2px;
+  }
 }

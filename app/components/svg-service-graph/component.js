@@ -16,7 +16,20 @@ export default Ember.Component.extend({
       return {
         x: 100 + 300*(index%3),
         y: 200*Math.floor(index/3),
+        path: {
+          m: [100, 150],
+          l: [[150,150], [150, 200], [300,300]]
+        },
         service: service
+      };
+    });
+  }),
+
+  paths: Ember.computed('services.[]', function() {
+    return this.get('services').map((service, index) => {
+      return {
+        m: [100, 150],
+        l: [[150,150], [150, 200], [300,300]]
       };
     });
   }),

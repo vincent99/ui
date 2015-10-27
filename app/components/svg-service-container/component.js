@@ -14,7 +14,6 @@ export default Ember.Component.extend({
 
   actions: {
     showDropDown: function(evt) {
-      debugger;
       this.get('resourceActions').show(this.get('node.service'), Ember.$('#dropdown-toggler'), this.$());
     }
   },
