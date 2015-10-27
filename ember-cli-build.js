@@ -73,6 +73,7 @@ module.exports = function(defaults) {
   app.import('bower_components/identicon.js/pnglib.js');
   app.import('bower_components/identicon.js/identicon.js');
   app.import('bower_components/md5-jkmyers/md5.js');
+  app.import('bower_components/webcola/WebCola/cola.js');
 
   return app.toTree();
 };
