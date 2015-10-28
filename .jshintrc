@@ -15,7 +15,8 @@
     "AWS",
     "Identicon",
     "md5",
-    "_"
+    "_",
+    "cola"
   ],
   "browser" : true,
   "boss" : true,

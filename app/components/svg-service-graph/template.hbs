@@ -12,10 +12,14 @@
         <path d="M2,2 L2,6 L6,4.25 L2,2" style="fill: #9CB6B5;" />
     </marker>
 </defs>
-{{#each nodes as |node|}}
-  {{log node}}
-  {{svg-service-container node=node}}
-{{/each}}
-{{#each paths as |path|}}
-  {{svg-edge path=path}}
-{{/each}}
+<g class="nodes">
+  {{#each nodes as |node|}}
+    {{log node}}
+    {{svg-service-container node=node}}
+  {{/each}}
+</g>
+<g class="edges">
+  {{#each paths as |path|}}
+    {{svg-edge path=path}}
+  {{/each}}
+</g>

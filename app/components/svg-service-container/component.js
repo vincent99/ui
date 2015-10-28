@@ -19,7 +19,9 @@ export default Ember.Component.extend({
   },
 
   transform: Ember.computed('node.{x,y}', function() {
-    return `translate(${this.get('node.x')},${this.get('node.y')})`;
+    var x = this.get('node.x') - this.get('width')/2;
+    var y = this.get('node.y') - this.get('height')/2;
+    return `translate(${x},${y})`;
   }),
 
   containerCount: Ember.computed('node.service.instances', function() {
@@ -33,5 +35,9 @@ export default Ember.Component.extend({
   stateBackground: function() {
     return this.get('node.service.stateColor').replace("text-","bg-");
   }.property('node.service.stateColor'),
+
+  foreignStyle: function() {
+    return `height: ${this.get('height')}px; width:${this.get('width')}px;`.htmlSafe();
+  }.property(),
 
 });

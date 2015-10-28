@@ -441,6 +441,7 @@ Service.reopenClass({
   consumedServicesFor: function(serviceId) {
     return _allMaps.filterBy('serviceId', serviceId).map((map) => {
       return Ember.Object.create({
+        id: map.get('id'),
         name: map.get('name'),
         service: byId(map.get('consumedServiceId')),
         ports: map.get('ports')||[],

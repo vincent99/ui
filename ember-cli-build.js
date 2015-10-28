@@ -64,7 +64,7 @@ module.exports = function(defaults) {
   app.import('bower_components/dagre-d3/dist/dagre-d3.core.js');
   app.import('bower_components/async/lib/async.js');
   app.import('bower_components/position-calculator/dist/position-calculator.js');
-  app.import('vendor/aws-sdk-ec2.js');
+  app.import('vendor/aws/aws-sdk-ec2.js');
   app.import('vendor/icons/style.css');
   app.import('vendor/icons/fonts/rancher-icons.eot', {destDir: 'assets/fonts'});
   app.import('vendor/icons/fonts/rancher-icons.svg', {destDir: 'assets/fonts'});
@@ -73,7 +73,7 @@ module.exports = function(defaults) {
   app.import('bower_components/identicon.js/pnglib.js');
   app.import('bower_components/identicon.js/identicon.js');
   app.import('bower_components/md5-jkmyers/md5.js');
-  app.import('bower_components/webcola/WebCola/cola.js');
+  app.import('vendor/webcola/cola.js');
 
   return app.toTree();
 };

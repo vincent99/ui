@@ -26,7 +26,6 @@
     "position-calculator": "~1.1.2",
     "prism": "gh-pages",
     "qunit": "~1.18.0",
-    "webcola": "~3.1.0",
     "zeroclipboard": "~2.2.0"
   }
 }
