@@ -76,7 +76,7 @@ export default Route.extend(Subscribe, PromiseToCb, {
         hosts:              ['projectSchemas',          this.cbFind('host')],
         stacks:             ['projectSchemas',          this.cbFind('stack')],
         mounts:             ['projectSchemas',          this.cbFind('mount', 'store', {filter: {state_ne: 'inactive'}})],
-        storagePools:       ['projectSchemas',          this.cbFind('storagepool')],
+//        storagePools:       ['projectSchemas',          this.cbFind('storagepool')],
         volumes:            ['projectSchemas',          this.cbFind('volume')],
         volumeTemplates:    ['projectSchemas',          this.cbFind('volumetemplate')],
         certificate:        ['projectSchemas',          this.cbFind('certificate')],
