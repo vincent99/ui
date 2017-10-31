@@ -161,17 +161,18 @@ var Host = Resource.extend(StateCounts,{
   }.property('info.osInfo.kernelVersion'),
 
   cpuBlurb: function() {
-    if ( this.get('info.cpuInfo.count') )
-    {
-      var ghz = Math.round(this.get('info.cpuInfo.mhz')/10)/100;
+    const count = this.get('info.cpuInfo.count');
+    const ghz = Math.round(this.get('info.cpuInfo.mhz')/10)/100;
 
-      if ( this.get('info.cpuInfo.count') > 1 )
-      {
-        return this.get('info.cpuInfo.count')+'x' + ghz + ' GHz';
-      }
-      else
-      {
-        return ghz + ' GHz';
+    if ( count ) {
+      if ( ghz ) {
+        if ( this.get('info.cpuInfo.count') > 1 ) {
+          return this.get('info.cpuInfo.count')+'x' + ghz + ' GHz';
+        } else {
+          return ghz + ' GHz';
+        }
+      } else {
+        return count + ' Core' + (count === 1 ? '' : 's');;
       }
     }
   }.property('info.cpuInfo.{count,mhz}'),
@@ -181,7 +182,7 @@ var Host = Resource.extend(StateCounts,{
   memoryBlurb: function() {
     if ( this.get('info.memoryInfo') )
     {
-      return formatKiB(this.get('info.memoryInfo.memTotal'));
+      return formatKiB(this.get('info.memoryInfo.memTotalKiB'));
     }
   }.property('info.memoryInfo.memTotal'),
 
