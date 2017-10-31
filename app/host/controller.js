@@ -7,30 +7,6 @@ export default Controller.extend(ContainerSparkStats, {
   queryParams: ['sortBy'],
   sortBy:      'name',
 
-  nonRootVolumes: function() {
-    return this.get('model.storagePools').filter(function(volume) {
-      return !volume.get('instanceId') && volume.get('state') !== 'purged';
-    });
-  }.property('model.@each.{instanceId,state}'),
-
-  storageHeaders:  [
-    {
-      name:           'state',
-      sort:           ['sortState','displayUri','id'],
-      translationKey: 'hostsPage.hostPage.storageTab.table.header.state',
-      width:          125,
-    },
-    {
-      name:           'hostPath',
-      sort:           ['displayUri','id'],
-      translationKey: 'hostsPage.hostPage.storageTab.table.header.hostPath',
-    },
-    {
-      name:           'mounts',
-      sort:           false,
-      translationKey: 'hostsPage.hostPage.storageTab.table.header.mounts',
-    },
-  ],
   portHeaders:  [
     {
       name:           'ip',

@@ -232,38 +232,5 @@
         {{/if}}
       {{/component}}
     {{/accordion-list-item}}
-
-    {{#accordion-list-item
-         title=(t 'hostsPage.hostPage.storageTab.header')
-         detail=(t 'hostsPage.hostPage.storageTab.detail')
-         status=(t 'pagination.volume' pages=1 count=nonRootVolumes.length)
-         statusClass=(if nonRootVolumes.length 'bg-success' 'text-muted')
-         expandAll=al.expandAll
-         expand=(action expandFn)
-         componentName='sortable-table'
-         as | parent |
-    }}
-      {{#component parent.intent
-           classNames="grid fixed mb-0 sortable-table"
-           bulkActions=false
-           paging=true
-           search=true
-           sortBy=sortBy
-           stickyHeader=false
-           descending=descending
-           headers=storageHeaders
-           body=nonRootVolumes
-           fullRows=true
-           as |sortable kind volume|
-      }}
-        {{#if (eq kind "row")}}
-          {{host-volume-row model=volume}}
-        {{else if (eq kind "norows")}}
-          <tr>
-            <td colspan="{{sortable.fullColspan}}" class="text-center text-muted">{{t 'hostsPage.hostPage.storageTab.table.body.noData'}}</td>
-          </tr>
-        {{/if}}
-      {{/component}}
-    {{/accordion-list-item}}
   {{/accordion-list}}
 </section>
