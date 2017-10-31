@@ -2,7 +2,7 @@ import EmberObject, { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import Util from 'ui/utils/util';
 import Resource from 'ember-api-store/models/resource';
-import { formatMib, formatSi } from 'shared/utils/util';
+import { formatKiB, formatMiB, formatSi } from 'shared/utils/util';
 import C from 'ui/utils/constants';
 import { denormalizeIdArray } from 'ember-api-store/utils/denormalize';
 import { satisfies, compare } from 'ui/utils/parse-version';
@@ -181,14 +181,14 @@ var Host = Resource.extend(StateCounts,{
   memoryBlurb: function() {
     if ( this.get('info.memoryInfo') )
     {
-      return formatMib(this.get('info.memoryInfo.memTotal'));
+      return formatKiB(this.get('info.memoryInfo.memTotal'));
     }
   }.property('info.memoryInfo.memTotal'),
 
   memoryLimitBlurb: computed('memory', function() {
     if ( this.get('memory') )
     {
-      return formatSi(this.get('memory'), 1024, 'iB', 'B');
+      return formatKiB(this.get('memory'));
     }
   }),
 
@@ -209,7 +209,7 @@ var Host = Resource.extend(StateCounts,{
         totalMb += fses[fs].capacity;
       });
 
-      return formatMib(totalMb);
+      return formatMiB(totalMb);
     }
     else if ( this.get('info.diskInfo.mountPoints') )
     {
@@ -219,7 +219,7 @@ var Host = Resource.extend(StateCounts,{
         totalMb += mounts[mountPoint].total;
       });
 
-      return formatMib(totalMb);
+      return formatMiB(totalMb);
     }
   }.property('info.diskInfo.mountPoints.@each.total','info.diskInfo.fileSystems.@each.capacity'),
 
@@ -230,7 +230,7 @@ var Host = Resource.extend(StateCounts,{
       var out = [];
       var fses = this.get('info.diskInfo.fileSystems')||[];
       Object.keys(fses).forEach((fs) => {
-        out.pushObject(EmberObject.create({label: fs, value: formatMib(fses[fs].capacity)}));
+        out.pushObject(Ember.Object.create({label: fs, value: formatMiB(fses[fs].capacity)}));
       });
 
       return out;
